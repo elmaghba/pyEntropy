@@ -25,10 +25,10 @@ def _embed(x, order=3, delay=1):
         Embedded time-series.
     """
     N = len(x)
-    Y = np.empty((order, N - (order - 1) * delay))
-    for i in range(order):
-        Y[i] = x[i * delay:i * delay + Y.shape[1]]
-    return Y.T
+    Y = np.empty(( N - (order - 1) * delay, order))
+    for i in range(N - (order - 1) * delay):
+        Y[i] = x[i * delay:i * delay +  order]
+    return Y
 
 
 def util_pattern_space(time_series, lag, dim):
